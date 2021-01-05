@@ -86,9 +86,7 @@ if (filterRobotsName == '')
 			<div className='tc'>	
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>
-
-					<p1>Search found no robots</p1>
-
+				<p class='p1'>Search found no robots</p>
 			</div>
 			)
 	}else {		
@@ -96,7 +94,6 @@ if (filterRobotsName == '')
 			<div className='tc'>	
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>
-
 					<ErrorBoundry>
 						<CardList robots={filterRobotsName}/>
 					</ErrorBoundry>
