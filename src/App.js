@@ -19,8 +19,8 @@ function App (){
 	// 		searchfield: ''
 	// 	}
 	// }
-	const [robots, setRobots] = useState([])
-	const [searchfield, setSearchfield] = useState('')
+const [robots, setRobots] = useState([])
+const [searchfield, setSearchfield] = useState('')
 	// componentDidMount() {
 	// 	fetch('https://jsonplaceholder.typicode.com/users').then(response => {
 	// 		return response.json();
@@ -30,20 +30,21 @@ function App (){
 	// 	})
 	// 	// this.setState({ robots: robots});
 	// }
-	useEffect(() => {fetch('https://jsonplaceholder.typicode.com/users')
+useEffect(() => {fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
 	 	.then(users => {setRobots(users)})
-	})
-	const onSearchChange = (event) => {
+	 	console.log(robots, searchfield)
+	}, []) // <-- didMount da se ne ucitava stalno
+const onSearchChange = (event) => {
 		setSearchfield(event.target.value)
 	}
-	const filterRobotsName = robots.filter(robot => {
-		if (robot.name.toLowerCase().includes(searchfield.toLowerCase()))
+const filterRobotsName = robots.filter(robot => {
+	if (robot.name.toLowerCase().includes(searchfield.toLowerCase()))
 			{
 				return robot.name;
 			}
 
-		else if (robot.email.toLowerCase().includes(searchfield.toLowerCase()))
+	else if (robot.email.toLowerCase().includes(searchfield.toLowerCase()))
 			{
 				return robot.email;
 			}
@@ -65,42 +66,42 @@ function App (){
 				// robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()),
 
 				// robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase())	
-		else{
+	else{
 				return '';
 		}
-	})
+})
 		
 		// const filterRobots = this.state.robots.filter(robots => {
 		// 	return robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase());	
 		// })
-	if (robots.lenght === 0)
+if (robots.lenght === 0)
  	{ 
  		// return <h1>Loading</h1>
 		return <h1>Loading</h1>
  	}
-	else {
-	if (filterRobotsName == '')
+else {
+if (filterRobotsName == '')
 	{
 		return(
 			<div className='tc'>	
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>
-				<Scroll>
+
 					<p1>Search found no robots</p1>
-				</Scroll>
+
 			</div>
 			)
 	}else {		
-	return(
-		<div className='tc'>	
-			<h1 className='f1'>RoboFriends</h1>
-			<SearchBox searchChange={onSearchChange}/>
-			<Scroll>
-				<ErrorBoundry>
-					<CardList robots={filterRobotsName}/>
-				</ErrorBoundry>
-			</Scroll>
-		</div>
+		return(
+			<div className='tc'>	
+				<h1 className='f1'>RoboFriends</h1>
+				<SearchBox searchChange={onSearchChange}/>
+
+					<ErrorBoundry>
+						<CardList robots={filterRobotsName}/>
+					</ErrorBoundry>
+
+			</div>
 		);
 	}
 	}
