@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { useState, useEffect} from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
@@ -11,36 +11,41 @@ import ErrorBoundry from './ErrorBoundry';
 // 	searchfield: ''
 // }
 
-class App extends Component {
-	constructor(){
-		super()
-		this.state = {
-			robots: [],
-			searchfield: ''
-		}
+function App (){
+	// constructor(){
+	// 	super()
+	// 	this.state = {
+	// 		robots: [],
+	// 		searchfield: ''
+	// 	}
+	// }
+	const [robots, setRobots] = useState([])
+	const [searchfield, setSearchfield] = useState('')
+	// componentDidMount() {
+	// 	fetch('https://jsonplaceholder.typicode.com/users').then(response => {
+	// 		return response.json();
+	// 	})
+	// 	.then(users => {
+	// 		this.setState({robots:users})
+	// 	})
+	// 	// this.setState({ robots: robots});
+	// }
+	useEffect(() => {fetch('https://jsonplaceholder.typicode.com/users')
+		.then(response => response.json())
+	 	.then(users => {setRobots(users)})
+	})
+	const onSearchChange = (event) => {
+		setSearchfield(event.target.value)
 	}
-	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users').then(response => {
-			return response.json();
-		})
-		.then(users => {
-			this.setState({robots:users})
-		})
-		// this.setState({ robots: robots});
-	}
-	onSearchChange = (event) => {
-		this.setState({ searchfield: event.target.value})
-	}
-	render(){
-		const filterRobotsName = this.state.robots.filter(robots => {
-			if (robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()))
+	const filterRobotsName = robots.filter(robot => {
+		if (robot.name.toLowerCase().includes(searchfield.toLowerCase()))
 			{
-				return robots.name;
+				return robot.name;
 			}
 
-			else if (robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase()))
+		else if (robot.email.toLowerCase().includes(searchfield.toLowerCase()))
 			{
-				return robots.email;
+				return robot.email;
 			}
 						// ispravno
 			// else if (robots.desc.toLowerCase().includes(this.state.searchfield.toLowerCase()))
@@ -60,26 +65,26 @@ class App extends Component {
 				// robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()),
 
 				// robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase())	
-			else{
+		else{
 				return '';
-			}
-		})
+		}
+	})
 		
 		// const filterRobots = this.state.robots.filter(robots => {
 		// 	return robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase());	
 		// })
-	if (this.state.robots.lenght === 0)
-		{ 
-			// return <h1>Loading</h1>
-			return <h1>Loading</h1>
-		}
+	if (robots.lenght === 0)
+ 	{ 
+ 		// return <h1>Loading</h1>
+		return <h1>Loading</h1>
+ 	}
 	else {
 	if (filterRobotsName == '')
 	{
 		return(
 			<div className='tc'>	
 				<h1 className='f1'>RoboFriends</h1>
-				<SearchBox searchChange={this.onSearchChange}/>
+				<SearchBox searchChange={onSearchChange}/>
 				<Scroll>
 					<p1>Search found no robots</p1>
 				</Scroll>
@@ -89,7 +94,7 @@ class App extends Component {
 	return(
 		<div className='tc'>	
 			<h1 className='f1'>RoboFriends</h1>
-			<SearchBox searchChange={this.onSearchChange}/>
+			<SearchBox searchChange={onSearchChange}/>
 			<Scroll>
 				<ErrorBoundry>
 					<CardList robots={filterRobotsName}/>
@@ -99,7 +104,7 @@ class App extends Component {
 		);
 	}
 	}
-	}
+	
 }
 
 export default App;
