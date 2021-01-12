@@ -41,6 +41,7 @@ const [searchfield, setSearchfield] = useState('');
 
 // The function that toggles between themes
 const toggleTheme = () => {
+	console.log(theme);
   // if the theme is not light, then set it to dark
   if (theme === 'light') {
     setTheme('dark');
@@ -97,9 +98,7 @@ else if (state === 'loaded') {
 		return(
 			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
-			
 			<div className='tc top:1rem'>	
-				
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>
@@ -114,8 +113,7 @@ else if (state === 'loaded') {
 		return(
 			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
 			<GlobalStyles />
-			<div className='tc top:1rem'>
-				
+			<div className='tc top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>

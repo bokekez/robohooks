@@ -14,13 +14,13 @@ const ToggleContainer = styled.button`
   display: flex;
   font-size: 0.5rem;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: auto;
   overflow: hidden;
-  padding: 0.5rem;
+  padding: 1rem;
   position: relative;
   width: 6rem;
   height: 3rem;
-  top: 2%;
+  top: 1.2rem;
 
   svg {
     height: 150px;
@@ -29,12 +29,12 @@ const ToggleContainer = styled.button`
     
     // sun icon
     &:first-child {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(3rem)'};
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(0.5rem)'};
     }
     
     // moon icon
     &:nth-child(2) {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-3rem)' : 'translateY(0)'};
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-0.5rem)' : 'translateY(0)'};
     }
   }
 `;
