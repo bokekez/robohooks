@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import CardList from './CardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
@@ -19,8 +19,9 @@ function App (){
 	// 		searchfield: ''
 	// 	}
 	// }
-const [robots, setRobots] = useState([])
-const [searchfield, setSearchfield] = useState('')
+const [state, setState] = useState('initial')
+const [robots, setRobots] = useState([]);
+const [searchfield, setSearchfield] = useState('');
 	// componentDidMount() {
 	// 	fetch('https://jsonplaceholder.typicode.com/users').then(response => {
 	// 		return response.json();
@@ -30,11 +31,14 @@ const [searchfield, setSearchfield] = useState('')
 	// 	})
 	// 	// this.setState({ robots: robots});
 	// }
-useEffect(() => {fetch('https://jsonplaceholder.typicode.com/users')
+
+useEffect(() => { if (setState !== 'loaded') {	
+		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.json())
 	 	.then(users => {setRobots(users)})
-	 	console.log(robots, searchfield)
-	}, []) // <-- didMount da se ne ucitava stalno
+	 	.then(setState('loaded'))
+	}}, []) // <-- didMount da se ne ucitava stalno
+
 const onSearchChange = (event) => {
 		setSearchfield(event.target.value)
 	}
@@ -47,40 +51,24 @@ const filterRobotsName = robots.filter(robot => {
 	else if (robot.email.toLowerCase().includes(searchfield.toLowerCase()))
 			{
 				return robot.email;
-			}
-						// ispravno
-			// else if (robots.desc.toLowerCase().includes(this.state.searchfield.toLowerCase()))
-			// {
-			// 	return robots.desc;
-			// }
-
-			//neispravno
-			// else { 
-			// 	return robots; 
-			// }
-			// else if(robots.id.toLowerCase().includes(this.state.searchfield.toLowerCase())){
-			// 	return robots.id;
-			// }
-			// else(robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase()))
- 
-				// robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase()),
-
-				// robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase())	
+			}	
 	else{
 				return '';
 		}
 })
-		
-		// const filterRobots = this.state.robots.filter(robots => {
-		// 	return robots.email.toLowerCase().includes(this.state.searchfield.toLowerCase());	
-		// })
-if (robots.lenght === 0)
+if (state === 'initial')
  	{ 
  		// return <h1>Loading</h1>
-		return <h1>Loading</h1>
+ 		return (
+ 		<div className='tc'>
+	 		<h1 className='f1'>RoboFriends</h1>
+			<SearchBox searchChange={onSearchChange}/>
+			<h1 className='tc'>Loading</h1> 
+		</div>
+		)
  	}
-else {
-if (filterRobotsName == '')
+else if (state === 'loaded') {
+	if (filterRobotsName == '')
 	{
 		return(
 			<div className='tc'>	
