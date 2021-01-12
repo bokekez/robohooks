@@ -70,6 +70,10 @@ const filterRobotsName = robots.filter(robot => {
 			{
 				return robot.email;
 			}	
+	else if (robot.website.toLowerCase().includes(searchfield.toLowerCase()))
+			{
+				return robot.website;
+			}	
 	else{
 				return '';
 		}
