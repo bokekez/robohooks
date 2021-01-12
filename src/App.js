@@ -17,6 +17,7 @@ import Toggle from './toggle.js'
 // }
 
 function App (){
+document.title = "Robohooks"
 	// constructor(){
 	// 	super()
 	// 	this.state = {
