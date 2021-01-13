@@ -1,9 +1,6 @@
 import React from 'react';
-import theme from './App';
-console.log(theme);
 
-
-const Card = (props) =>{
+const Card = (props, theme) =>{
 	const { name, email, website, id } = props;
 	if (theme === 'light')
 	{

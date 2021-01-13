@@ -25,6 +25,7 @@ document.title = "Robohooks"
 	// 		searchfield: ''
 	// 	}
 	// }
+
 const [theme, setTheme] = useState('light');
 const [state, setState] = useState('initial')
 const [robots, setRobots] = useState([]);
@@ -135,5 +136,4 @@ else if (state === 'loaded') {
 	}
 	
 }
-
 export default App;
