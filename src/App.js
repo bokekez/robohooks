@@ -142,7 +142,7 @@ if (state === 'initial')
  		<GlobalStyles /> 
         <div className='tc top:1rem'>
        		
-        	<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
+        	<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
 	 		<h1 className='f1'>RoboFriends</h1>
 			<SearchBox searchChange={onSearchChange}/>
 			<h1 className='tc'>Loading</h1> 
@@ -156,7 +156,7 @@ else if (state === 'loaded') {
 	if (filterRobotsName == '')
 	{
 		return(
-			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+			<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
 			<GlobalStyles />
 			<div className='tc top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
