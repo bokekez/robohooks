@@ -3,7 +3,7 @@ export const lightTheme = {
   text: '#363537',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
-  myclass: { background: 'green' },
+
 }
 
 export const darkTheme = {
@@ -11,5 +11,13 @@ export const darkTheme = {
   text: '#363537',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
-  myclass: 'background-color: blue',
+
+}
+
+export const grayTheme = {
+  body: 'radial-gradient(circle, rgba(77,73,74,1) 4%, rgba(148,170,233,1) 100%);',
+  text: '#363537',
+  toggleBorder: '#6B8096',
+  gradient: 'linear-gradient(#091236, #1E215D)',
+
 }

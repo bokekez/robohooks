@@ -6,7 +6,7 @@ import Scroll from './Scroll';
 import './App.css';
 import ErrorBoundry from './ErrorBoundry';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
+import { lightTheme, darkTheme, grayTheme } from './theme';
 import { GlobalStyles } from './global';
 import Toggle from './toggle.js'
 
@@ -34,16 +34,20 @@ const [searchfield, setSearchfield] = useState('');
 	// 	// this.setState({ robots: robots});
 	// }
 	// The function that toggles between themes
+
 const toggleTheme = () => {
 	console.log(theme);
   // if the theme is not light, then set it to dark
   if (theme === 'light') {
     setTheme('dark');
-    return theme;
+
   // otherwise, it should be light
-  } else {
-    setTheme('light');
-    return theme;
+  } else if (theme === 'dark') {
+    setTheme('gray');
+
+  }
+  else {
+  	setTheme('light');
   }
 }
 
@@ -53,7 +57,7 @@ const Card = (props) =>{
 	if (theme === 'light')
 	{
 	return (
-		<div class="myclass" className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
+		<div class="myclass1" className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
 			<div>
 				<h2 className='f5'>{name}</h2>
@@ -65,7 +69,7 @@ const Card = (props) =>{
 	}
 	else if (theme === 'dark') {
 		return (
-		<div className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5'>
+		<div class="myclass2" className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
 			<div>
 				<h2 className='f5'>{name}</h2>
@@ -75,7 +79,7 @@ const Card = (props) =>{
 		</div>
 	)
 	}
-	else {
+	else if (theme === 'gray') {
 		return (
 		<div className='tc bg-light-gray dib br3 pa3 ma2 grow bw2 shadow-5'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
@@ -167,7 +171,9 @@ else if (state === 'loaded') {
 			)
 	}else {		
 		return(
-			<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+			// <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+			<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
+			>
 			<GlobalStyles />
 			<div className='tc top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
@@ -186,4 +192,5 @@ else if (state === 'loaded') {
 	}
 	
 }
+
 export default App;
