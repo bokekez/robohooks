@@ -15,7 +15,7 @@ export const darkTheme = {
 }
 
 export const grayTheme = {
-  body: 'radial-gradient(circle, rgba(77,73,74,1) 4%, rgba(148,170,233,1) 100%);',
+  body: 'linear-gradient(90deg, rgba(77,73,74,1) 11%, rgba(162,164,172,1) 100%);',
   text: '#363537',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
