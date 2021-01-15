@@ -1,8 +1,7 @@
 import React from 'react';
 
 const SearchBox = ({ searchfield, searchChange, theme}) => {
-	console.log('+1');
-	let colorVar;
+	// let colorVar;
 	// swtich(props.theme) {
 	// 	case('light'):
 	// 		colorVar='bg-lightest-blue';
