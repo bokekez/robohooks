@@ -2,7 +2,7 @@ import React from 'react'
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
-// Import a couple of SVG files we'll use in the design: https://www.flaticon.com
+// import { lightTheme, darkTheme, grayTheme } from './theme';
 import { ReactComponent as MoonIcon } from './icons/moon.svg';
 import { ReactComponent as SunIcon } from './icons/sun.svg';
 
@@ -15,7 +15,7 @@ const ToggleContainer = styled.button`
   font-size: 0.5rem;
   justify-content: space-between;
   margin: auto;
-  overflow: hidden;
+  overflow: visible;
   padding: 1rem;
   position: relative;
   width: 6rem;
@@ -23,18 +23,20 @@ const ToggleContainer = styled.button`
   top: 1.2rem;
 
   svg {
-    height: 150px;
+    height: 2rem;
     width: 1.5rem;
-    transition: all 0.3s linear;
+    transition: all 1s linear;
     
-    // sun icon
+
     &:first-child {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(0.5rem)'};
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(70px)'};
     }
     
-    // moon icon
     &:nth-child(2) {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-0.5rem)' : 'translateY(0)'};
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-70px)' : 'translateY(0)'};
+    }
+    &:nth-child(3) {
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-70px)' : 'translateY(30px)'};
     }
   }
 `;
@@ -42,7 +44,7 @@ const ToggleContainer = styled.button`
 const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
   return (
-    <ToggleContainer onClick={toggleTheme} >
+    <ToggleContainer lightTheme={isLight} onClick={toggleTheme} >
       <SunIcon />
       <MoonIcon />
     </ToggleContainer>

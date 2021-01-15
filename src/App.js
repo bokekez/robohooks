@@ -57,7 +57,7 @@ const Card = (props) =>{
 	if (theme === 'light')
 	{
 	return (
-		<div class="myclass1" className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
+		<div class="myclass1" className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5 black'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
 			<div>
 				<h2 className='f5'>{name}</h2>
@@ -69,7 +69,7 @@ const Card = (props) =>{
 	}
 	else if (theme === 'dark') {
 		return (
-		<div class="myclass2" className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5'>
+		<div class="myclass2" className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5 black'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
 			<div>
 				<h2 className='f5'>{name}</h2>
@@ -81,7 +81,7 @@ const Card = (props) =>{
 	}
 	else if (theme === 'gray') {
 		return (
-		<div className='tc bg-light-gray dib br3 pa3 ma2 grow bw2 shadow-5'>
+		<div className='tc bg-light-gray dib br3 pa3 ma2 grow bw2 shadow-5 black'>
 			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
 			<div>
 				<h2 className='f5'>{name}</h2>
@@ -140,7 +140,7 @@ if (state === 'initial')
  		return (
  		<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
  		<GlobalStyles /> 
-        <div className='tc top:1rem'>
+        <div className='tc #0ccac4 top:1rem'>
        		
         	<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 	 		<h1 className='f1'>RoboFriends</h1>
@@ -158,7 +158,7 @@ else if (state === 'loaded') {
 		return(
 			<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
 			<GlobalStyles />
-			<div className='tc top:1rem'>	
+			<div className='tc #0ccac4 top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 				<h1 className='f1'>RoboFriends</h1>
 				<SearchBox searchChange={onSearchChange}/>
