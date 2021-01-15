@@ -3,8 +3,9 @@ import { func, string } from 'prop-types';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 // import { lightTheme, darkTheme, grayTheme } from './theme';
-import { ReactComponent as MoonIcon } from './icons/moon.svg';
-import { ReactComponent as SunIcon } from './icons/sun.svg';
+import { ReactComponent as Green } from './icons/Green.svg';
+import { ReactComponent as Blue } from './icons/Blue.svg';
+import { ReactComponent as Gray } from './icons/Gray.svg';
 
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
@@ -13,9 +14,9 @@ const ToggleContainer = styled.button`
   cursor: pointer;
   display: flex;
   font-size: 0.5rem;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin: auto;
-  overflow: visible;
+  overflow: hidden;
   padding: 1rem;
   position: relative;
   width: 6rem;
@@ -33,20 +34,23 @@ const ToggleContainer = styled.button`
     }
     
     &:nth-child(2) {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-70px)' : 'translateY(0)'};
+      transform: ${({ darkTheme }) => darkTheme ? 'translateY(0)' : 'translateY(70px)'};
     }
     &:nth-child(3) {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-70px)' : 'translateY(30px)'};
+      transform: ${({ grayTheme }) => grayTheme ? 'translateY(0)' : 'translateY(70px)'};
     }
   }
 `;
 
 const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
+  const isGray = theme === 'gray';
+  const isDark = theme === 'dark';
   return (
-    <ToggleContainer lightTheme={isLight} onClick={toggleTheme} >
-      <SunIcon />
-      <MoonIcon />
+    <ToggleContainer lightTheme={isLight} grayTheme={isGray} darkTheme={isDark} onClick={toggleTheme} >
+      <Green />
+      <Blue />
+      <Gray />
     </ToggleContainer>
   );
 };
