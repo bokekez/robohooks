@@ -24,16 +24,6 @@ const [theme, setTheme] = useState('light');
 const [state, setState] = useState('initial')
 const [robots, setRobots] = useState([]);
 const [searchfield, setSearchfield] = useState('');
-	// componentDidMount() {
-	// 	fetch('https://jsonplaceholder.typicode.com/users').then(response => {
-	// 		return response.json();
-	// 	})
-	// 	.then(users => {
-	// 		this.setState({robots:users})
-	// 	})
-	// 	// this.setState({ robots: robots});
-	// }
-	// The function that toggles between themes
 
 const toggleTheme = () => {
 	console.log(theme);
@@ -47,59 +37,6 @@ const toggleTheme = () => {
   else {
   	setTheme('light');
   }
-}
-
-const Card = (props) =>{
-	const { name, email, website, id } = props;
-
-	if (theme === 'light')
-	{
-	return (
-		<div class="myclass1" className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5 black'>
-			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
-			<div>
-				<h2 className='f5'>{name}</h2>
-				<p className='f6'>{email}</p>
-				<p2 className='f6'>{website}</p2>
-			</div>
-		</div>
-	)
-	}
-	else if (theme === 'dark') {
-		return (
-		<div class="myclass2" className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5 black'>
-			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
-			<div>
-				<h2 className='f5'>{name}</h2>
-				<p className='f6'>{email}</p>
-				<p2 className='f6'>{website}</p2>
-			</div>
-		</div>
-	)
-	}
-	else if (theme === 'gray') {
-		return (
-		<div className='tc bg-light-gray dib br3 pa3 ma2 grow bw2 shadow-5 black'>
-			<img alt='robot' src={`https://robohash.org/${id}?size=200x200`} />
-			<div>
-				<h2 className='f5'>{name}</h2>
-				<p className='f6'>{email}</p>
-				<p2 className='f6'>{website}</p2>
-			</div>
-		</div>
-	)
-	}
-}
-const CardList = ({ robots, theme }) =>{
-	const cardComponent = robots.map((user, i) => {
-		return <Card key={i} id={robots[i].id} name={robots[i].name} email={robots[i].email} website={robots[i].website}/>
-	})
-	return(
-	<div >
-		{cardComponent}
-    </div>
-
-	);
 }
 
 useEffect(() => { if (setState !== 'loaded') {	
@@ -134,15 +71,13 @@ const filterRobotsName = robots.filter(robot => {
 
 if (state === 'initial')
  	{ 
- 		// return <h1>Loading</h1>
  		return (
  		<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
  		<GlobalStyles /> 
         <div className='tc #0ccac4 top:1rem'>
-       		
         	<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 	 		<h1 className='f1'>RoboFriends</h1>
-			<SearchBox searchChange={onSearchChange}/>
+			<SearchBox theme={theme} searchChange={onSearchChange}/>
 			<h1 className='tc'>Loading</h1> 
 		</div>
         <footer>
@@ -159,7 +94,7 @@ else if (state === 'loaded') {
 			<div className='tc #0ccac4 top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 				<h1 className='f1'>RoboFriends</h1>
-				<SearchBox searchChange={onSearchChange}/>
+				<SearchBox theme={theme} searchChange={onSearchChange}/>
 				<p class='p1'>Search found no robots</p>
 			</div>
 	        <footer>
@@ -169,15 +104,15 @@ else if (state === 'loaded') {
 			)
 	}else {		
 		return(
-			// <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+			
 			<ThemeProvider theme={theme === 'light' ? lightTheme : theme === 'dark' ? darkTheme : theme === 'gray' ? grayTheme : theme}>
 			<GlobalStyles />
 			<div className='tc top:1rem'>	
 				<Toggle className='tc' theme={theme} toggleTheme={toggleTheme} />
 				<h1 className='f1'>RoboFriends</h1>
-				<SearchBox searchChange={onSearchChange}/>
+				<SearchBox theme={theme} searchChange={onSearchChange}/>
 					<ErrorBoundry>
-						<CardList robots={filterRobotsName}/>
+						<CardList theme={theme} robots={filterRobotsName}/>
 					</ErrorBoundry>
 
 			</div>
