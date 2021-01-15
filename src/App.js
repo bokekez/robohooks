@@ -37,11 +37,9 @@ const [searchfield, setSearchfield] = useState('');
 
 const toggleTheme = () => {
 	console.log(theme);
-  // if the theme is not light, then set it to dark
-  if (theme === 'light') {
+	if (theme === 'light') {
     setTheme('dark');
 
-  // otherwise, it should be light
   } else if (theme === 'dark') {
     setTheme('gray');
 
@@ -53,7 +51,7 @@ const toggleTheme = () => {
 
 const Card = (props) =>{
 	const { name, email, website, id } = props;
-	console.log(theme);
+
 	if (theme === 'light')
 	{
 	return (
