@@ -10,6 +10,7 @@ import { ReactComponent as Gray } from './icons/Gray.svg';
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
+  border-color:white;
   border-radius: 30px;
   cursor: pointer;
   display: flex;
@@ -20,7 +21,7 @@ const ToggleContainer = styled.button`
   padding: 1rem;
   position: relative;
   width: 6rem;
-  height: 3rem;
+  height: 2.5rem;
   top: 1.2rem;
 
   svg {
@@ -30,14 +31,14 @@ const ToggleContainer = styled.button`
     
 
     &:first-child {
-      transform: ${({ lightTheme }) => lightTheme ? 'translateY(0)' : 'translateY(70px)'};
+      transform: ${({ lightTheme }) => lightTheme ? 'translateY(-8px)' : 'translateY(50px)'};
     }
     
     &:nth-child(2) {
-      transform: ${({ darkTheme }) => darkTheme ? 'translateY(0)' : 'translateY(70px)'};
+      transform: ${({ darkTheme }) => darkTheme ? 'translateY(-8px)' : 'translateY(50px)'};
     }
     &:nth-child(3) {
-      transform: ${({ grayTheme }) => grayTheme ? 'translateY(0)' : 'translateY(70px)'};
+      transform: ${({ grayTheme }) => grayTheme ? 'translateY(-8px)' : 'translateY(50px)'};
     }
   }
 `;

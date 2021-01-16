@@ -18,7 +18,7 @@ const SearchBox = ({ searchfield, searchChange, theme }) => {
 	}
 		return (
 		<div className='tc pa2'>
-		<input className ={`pa3 ba b--green ${colorVar}`}
+		<input className ={`pa3 ba b--white ${colorVar}`}
 		type='search' placeholder='search robots' 
 		onChange={searchChange} value={searchfield}
 		
