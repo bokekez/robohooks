@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/robohooks/static/css/main.9e0bad3f.chunk.css",
-    "main.js": "/robohooks/static/js/main.1408a552.chunk.js",
-    "main.js.map": "/robohooks/static/js/main.1408a552.chunk.js.map",
+    "main.js": "/robohooks/static/js/main.c12f926c.chunk.js",
+    "main.js.map": "/robohooks/static/js/main.c12f926c.chunk.js.map",
     "runtime-main.js": "/robohooks/static/js/runtime-main.cea2df4a.js",
     "runtime-main.js.map": "/robohooks/static/js/runtime-main.cea2df4a.js.map",
     "static/css/2.b2b01ed1.chunk.css": "/robohooks/static/css/2.b2b01ed1.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.b2b01ed1.chunk.css",
     "static/js/2.8ee03049.chunk.js",
     "static/css/main.9e0bad3f.chunk.css",
-    "static/js/main.1408a552.chunk.js"
+    "static/js/main.c12f926c.chunk.js"
   ]
 }
